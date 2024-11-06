@@ -1,0 +1,49 @@
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import logo from "../assets/logoeyaj2.webp";
+
+const Navbar = () => {
+  const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  const handleLogoClick = () => {
+    navigate("/");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+      section.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  return (
+    <div
+      className={`flex flex-row justify-between px-4 py-4 w-full absolute transition-all duration-300 text-white ${
+        isScrolled ? "bg-black/40 backdrop-blur-md shadow-lg" : ""
+      }`}
+    >
+      <button onClick={handleLogoClick}>
+        <img src={logo} alt="Logo" width={40} height={20} />
+      </button>
+      <div className="flex gap-6 text-xl font-Quicksand ">
+        <button onClick={handleLogoClick}>Inicio</button>
+        <button onClick={() => scrollToSection("nosotros")}>Nosotros</button>
+        <button onClick={() => scrollToSection("servicios")}>Servicios</button>
+        <button onClick={() => scrollToSection("sede")}>Sede</button>
+      </div>
+    </div>
+  );
+};
+
+export default Navbar;
