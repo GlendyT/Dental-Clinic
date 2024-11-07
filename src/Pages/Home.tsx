@@ -8,20 +8,22 @@ import Servicios from "./Servicios";
 const Home = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <div className="sticky top-0 w-full z-20"> 
-      <Navbar />
+      <div className="sticky top-0 w-full z-20 ">
+        <Navbar />
       </div>
       <div className="flex-1 overflow-auto">
         <div id="inicio">
           <Inicio />
         </div>
-        <div id="nosotros">
+        <div id="nosotros" className="backdrop-blur-sm bg-black/10">
           <Nosotros />
+          <hr className="py-28 bg-redE max-sm:py-16" />
         </div>
-        <div id="servicios">
+        <div id="servicios" className="backdrop-blur-sm bg-black/10">
           <Servicios />
+          <hr className="py-28 bg-yellowE max-sm:py-16" />
         </div>
-        <div id="sede">
+        <div id="sede" className="backdrop-blur-sm bg-black/10">
           <Sede />
         </div>
       </div>

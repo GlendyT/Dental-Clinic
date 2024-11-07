@@ -29,14 +29,14 @@ const Navbar = () => {
 
   return (
     <div
-      className={`flex flex-row justify-between px-4 py-4 w-full absolute transition-all duration-300 text-white ${
+      className={`flex flex-row justify-between px-4 py-4 w-full absolute transition-all duration-300 text-white gap-4 ${
         isScrolled ? "bg-black/40 backdrop-blur-md shadow-lg" : ""
       }`}
     >
       <button onClick={handleLogoClick}>
-        <img src={logo} alt="Logo" width={40} height={20} />
+        <img src={logo} alt="Logo" width={50} height={20} />
       </button>
-      <div className="flex gap-6 text-xl font-Quicksand ">
+      <div className="flex gap-6 text-xl font-Quicksand font-extrabold max-sm:text-xs ">
         <button onClick={handleLogoClick}>Inicio</button>
         <button onClick={() => scrollToSection("nosotros")}>Nosotros</button>
         <button onClick={() => scrollToSection("servicios")}>Servicios</button>

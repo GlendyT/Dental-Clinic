@@ -18,13 +18,13 @@ const Nosotros = () => {
   };
 
   return (
-    <div className="flex flex-row items-center gap-6 justify-center px-6 py-10 min-h-screen text-black">
+    <div className="flex flex-row items-center gap-6 justify-center px-6 py-10 min-h-screen text-black max-sm:flex-col max-lg:flex-col">
       <div className="flex flex-col ">
         <div className="flex justify-center gap-4 mb-6 font-Quicksand">
           {["NOSOTROS", "MISION", "VISION", "VALORES"].map((tab) => (
             <button
               key={tab}
-              className={`px-4 py-2 font-semibold border-b-4 ${
+              className={`px-4 py-2 font-semibold border-b-4 max-sm:text-xs ${
                 activeTab === tab
                   ? "border-redE text-yellowE "
                   : "border-transparent text-yellowE"
@@ -37,8 +37,8 @@ const Nosotros = () => {
         </div>
 
         <div className="w-full max-w-3xl p-6 rounded-lg text-center font-Quicksand  bg-black/10 backdrop-blur-md shadow-lg ">
-          <h2 className="text-3xl font-bold text-redE mb-4  ">{activeTab}</h2>
-          <p className="text-lg text-purpleE  ">{content[activeTab]}</p>
+          <h2 className="text-3xl font-bold text-redE mb-4 max-sm:text-lg ">{activeTab}</h2>
+          <p className="text-lg text-purpleE max-sm:text-xs ">{content[activeTab]}</p>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ const Nosotros = () => {
         alt="Nosotros"
         width={450}
         height={150}
-        className="mb-8"
+        className="mb-8 max-sm:w-60"
       />
     </div>
   );
