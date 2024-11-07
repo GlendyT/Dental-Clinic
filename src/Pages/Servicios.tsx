@@ -1,10 +1,12 @@
+import { EmblaOptionsType } from "embla-carousel";
 import Carousel from "../components/Carousel";
+
+const OPTIONS: EmblaOptionsType = { loop: true };
+
 const Servicios = () => {
   return (
-    <div className="flex flex-row-2 items-center justify-center min-h-screen text-black max-sm:flex-col max-sm:gap-2 max-sm:mt-24 max-2xl:gap-2">
-      <div>
-        <Carousel/>
-      </div>
+    <div className="flex flex-col pb-2 items-center justify-center min-h-screen text-black max-sm:flex-col max-sm:mt-0">
+      <Carousel options={OPTIONS} />
     </div>
   );
 };

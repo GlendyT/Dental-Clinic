@@ -10,11 +10,19 @@ const Footer = () => {
   };
 
   return (
-    <div className="flex flex-row justify-between px-4 py-4 bg-[#552472] z-10 pb-4 ">
+    <div className="flex flex-col items-center justify-center px-4 py-4 bg-purpleE z-10 pb-4 ">
       <button onClick={handleClick}>
-        <img src={logo} alt="Logo" width={100} height={100} />
+        <img
+          src={logo}
+          alt="Logo"
+          width={100}
+          height={100}
+          className="drop-shadow-2xl"
+        />
       </button>
-      <p className="text-5xl text-white">FOOTER</p>
+      <p className="text-sm text-white">
+        Todos los derechos reservados © {new Date().getFullYear()}{" "}
+      </p>
     </div>
   );
 };
