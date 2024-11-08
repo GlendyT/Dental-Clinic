@@ -30,4 +30,4 @@ jobs:
 
       # Build the Next.js application with environment variables
       - name: Build React Vite.js app
-        run: npm build
+        run: npm run build
