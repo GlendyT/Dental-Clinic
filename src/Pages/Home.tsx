@@ -1,3 +1,4 @@
+import { FloatingWhatsApp } from "../components/FloatingWhatsAppl";
 import Footer from "./Footer";
 import Inicio from "./Inicio";
 import Navbar from "./Navbar";
@@ -27,6 +28,14 @@ const Home = () => {
           <Sede />
         </div>
       </div>
+      <FloatingWhatsApp
+        phoneNumber="56126256"
+        accountName="Clínica Dental Eyaj"
+        allowEsc
+        allowClickAway
+        notification
+        notificationSound
+      />
       <Footer />
     </div>
   );
