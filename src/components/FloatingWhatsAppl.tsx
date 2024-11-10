@@ -2,8 +2,7 @@ import React, {
     useReducer,
     useEffect,
     useCallback,
-    useRef,
-    useMemo
+    useRef
   } from "react";
   import { reducer } from "../reducer";
   import { WhatsappSVG, CloseSVG, CheckSVG, SendSVG } from "./Icons";
@@ -12,6 +11,7 @@ import React, {
   import lightBG from "../assets/bg-chat-tile-dark.png";
   import dummyAvatar from "../assets/logoeyaj.webp";
   import SoundBeep from "../assets/whatsapp-notification.mp3";
+import { useFloating } from "../hooks/useFloating";
   
   export interface FloatingWhatsAppProps {
     onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
@@ -88,12 +88,7 @@ import React, {
       isDelay: true,
       isNotification: false
     });
-  
-    const timeNow = useMemo(
-      () =>
-        new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
-      []
-    );
+    const { timeNow } = useFloating()
   
     const inputRef = useRef<HTMLInputElement | null>(null);
     const soundRef = useRef<HTMLAudioElement | null>(null);

@@ -4,12 +4,15 @@ import "./index.css";
 import Router from "./router.tsx";
 import { PageProvider } from "./context/PageProvider.tsx";
 import { SlideProvider } from "./context/SlideProvider.tsx";
+import { FloatingButtonProvider } from "./context/FloatingButtonProvider.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <PageProvider>
       <SlideProvider>
-        <Router />
+        <FloatingButtonProvider>
+          <Router />
+        </FloatingButtonProvider>
       </SlideProvider>
     </PageProvider>
   </StrictMode>
