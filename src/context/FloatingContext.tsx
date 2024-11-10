@@ -33,7 +33,13 @@ type FloatingContextType = {
   buttonStyle?: React.CSSProperties;
   buttonClassName?: string;
   timeNow: string
-  
+  isOpen: boolean
+  isDelay: boolean
+  isNotification: boolean  
+  inputRef: React.MutableRefObject<HTMLInputElement | null>
+  soundRef: React.MutableRefObject<HTMLAudioElement | null>
+  loops: React.MutableRefObject<number>
+  notificationInterval: React.MutableRefObject<number>
 };
 
 export const FloatingContext = createContext<FloatingContextType>(null!);

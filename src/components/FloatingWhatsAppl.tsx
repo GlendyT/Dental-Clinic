@@ -2,14 +2,12 @@ import React, {
     useReducer,
     useEffect,
     useCallback,
-    useRef
   } from "react";
   import { reducer } from "../reducer";
   import { WhatsappSVG, CloseSVG, CheckSVG, SendSVG } from "./Icons";
   import css from "../components/styles.module.css"
   import darkBG from "../assets/bg-chat-tile-light.png";
   import lightBG from "../assets/bg-chat-tile-dark.png";
-  import dummyAvatar from "../assets/logoeyaj.webp";
   import SoundBeep from "../assets/whatsapp-notification.mp3";
 import { useFloating } from "../hooks/useFloating";
   
@@ -54,13 +52,6 @@ import { useFloating } from "../hooks/useFloating";
     onNotification,
     onLoopDone,
   
-    phoneNumber = "56126256",
-    accountName = "Account Name",
-    avatar = dummyAvatar,
-    statusMessage = "",
-    chatMessage = "Hola!🦷  \nComo podemos ayudarte?",
-    placeholder = "Escribe tu mensaje..",
-  
     allowClickAway = false,
     allowEsc = false,
   
@@ -88,12 +79,7 @@ import { useFloating } from "../hooks/useFloating";
       isDelay: true,
       isNotification: false
     });
-    const { timeNow } = useFloating()
-  
-    const inputRef = useRef<HTMLInputElement | null>(null);
-    const soundRef = useRef<HTMLAudioElement | null>(null);
-    const loops = useRef(0);
-    const notificationInterval = useRef(0);
+    const { timeNow, phoneNumber, accountName, avatar, statusMessage, chatMessage, placeholder, inputRef, soundRef, loops, notificationInterval } = useFloating()
   
     const handleNotification = useCallback(() => {
       if (!notification) return;
@@ -202,7 +188,8 @@ import { useFloating } from "../hooks/useFloating";
           className={`${css.whatsappButton} ${buttonClassName}`}
           onClick={handleOpen}
           style={buttonStyle}
-          aria-hidden="true"
+          //aria-hidden="true"
+      
         >
           <WhatsappSVG />
           {isNotification && (
@@ -220,7 +207,7 @@ import { useFloating } from "../hooks/useFloating";
             isOpen ? css.open : css.close
           } ${chatboxClassName}`}
           onClick={(event) => event.stopPropagation()}
-          aria-hidden="true"
+          //aria-hidden="true"
           style={{ height: isOpen ? chatboxHeight : 0, ...chatboxStyle }}
         >
           <header className={css.chatHeader}>
@@ -231,7 +218,9 @@ import { useFloating } from "../hooks/useFloating";
               <span className={css.statusTitle}>{accountName}</span>
               <span className={css.statusSubtitle}>{statusMessage}</span>
             </div>
-            <div className={css.close} onClick={handleClose} aria-hidden="true">
+            <div className={css.close} onClick={handleClose} 
+           // aria-hidden="true"
+            >
               <CloseSVG />
             </div>
           </header>
