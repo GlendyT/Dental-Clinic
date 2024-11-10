@@ -1,17 +1,28 @@
-import { createContext, ReactNode } from "react";
+import { ReactNode, useMemo } from "react";
+import { FloatingContext } from "./FloatingContext";
 
 type FloatingButtonProviderProps = {
   children: ReactNode;
 };
 
-export const FloatingButtonContext = createContext();
-
 export const FloatingButtonProvider = ({
   children,
 }: FloatingButtonProviderProps) => {
+  const timeNow = useMemo(
+    () =>
+      new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" }),
+    []
+  );
+
+
   return (
-    <FloatingButtonContext.Provider value={{}}>
+    <FloatingContext.Provider
+      value={{
+        timeNow,
+
+      }}
+    >
       {children}
-    </FloatingButtonContext.Provider>
+    </FloatingContext.Provider>
   );
 };
