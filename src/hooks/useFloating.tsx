@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { FloatingContext } from "../context/FloatingContext";
+import FloatingContext from "../context/FloatingButtonProvider";
+
 
 
 export const useFloating = () => {
