@@ -28,14 +28,7 @@ const Home = () => {
           <Sede />
         </div>
       </div>
-      <FloatingWhatsApp
-        phoneNumber="56126256"
-        accountName="Clínica Dental Eyaj"
-        allowEsc
-        allowClickAway
-        notification
-        notificationSound
-      />
+      <FloatingWhatsApp />
       <Footer />
     </div>
   );

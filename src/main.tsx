@@ -10,7 +10,11 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <PageProvider>
       <SlideProvider>
-        <FloatingButtonProvider>
+        <FloatingButtonProvider
+          notification={false}
+          phoneNumber={"56126256"}
+          accountName={"Clinica Dental"}
+        >
           <Router />
         </FloatingButtonProvider>
       </SlideProvider>
