@@ -11,37 +11,12 @@ import { reducer } from "../reducer";
 import { createContext } from "react";
 
 type FloatingContextTypeProps = {
-  onClick?: (event: React.MouseEvent<HTMLDivElement>) => void;
-  onSubmit?: (
-    event: React.FormEvent<HTMLFormElement>,
-    formValue: string
-  ) => void;
-  onClose?: () => void;
-  onNotification?: () => void;
-  onLoopDone?: () => void;
   phoneNumber: string;
   accountName: string;
-  chatboxHeight?: number;
-  chatboxStyle?: React.CSSProperties;
-  chatboxClassName?: string;
   avatar?: string;
   statusMessage?: string;
   chatMessage?: string;
   placeholder?: string;
-  notification?: boolean;
-  notificationDelay?: number;
-  notificationLoop?: number;
-  notificationSound?: boolean;
-  notificationSoundSrc?: string;
-  notificationStyle?: React.CSSProperties;
-  notificationClassName?: string;
-
-  allowEsc?: boolean;
-  darkMode?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-  buttonStyle?: React.CSSProperties;
-  buttonClassName?: string;
   timeNow: string;
   isOpen: boolean;
   isDelay: boolean;
@@ -59,7 +34,7 @@ const FloatingContext = createContext<FloatingContextTypeProps>(null!);
 
 type FloatingButtonProviderProps = {
   children: ReactNode;
-  accountName: string;
+
   notificationDelay?: number;
   notificationLoop?: number;
   notificationSound?: boolean;
@@ -75,6 +50,7 @@ type FloatingButtonProviderProps = {
   allowClickAway?: boolean;
   allowEsc?: boolean;
   phoneNumber: string;
+  accountName: string;
 };
 
 const FloatingButtonProvider = ({
@@ -88,9 +64,10 @@ const FloatingButtonProvider = ({
   onClick,
   onClose,
   onSubmit,
-  phoneNumber,
   allowClickAway = true,
   allowEsc,
+  phoneNumber,
+  accountName,
 }: FloatingButtonProviderProps) => {
   const [{ isOpen, isDelay, isNotification }, dispatch] = useReducer(reducer, {
     isOpen: false,
@@ -211,8 +188,8 @@ const FloatingButtonProvider = ({
     <FloatingContext.Provider
       value={{
         timeNow,
-        phoneNumber: "56126256",
-        accountName: "Account Name",
+        phoneNumber,
+        accountName,
         avatar: dummyAvatar,
         statusMessage: "",
         chatMessage: "Hola!🦷  \nComo podemos ayudarte?",
