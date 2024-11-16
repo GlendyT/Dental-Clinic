@@ -2,44 +2,11 @@ import { WhatsappSVG, CloseSVG, CheckSVG, SendSVG } from "./Icons";
 import css from "../components/styles.module.css";
 import darkBG from "../assets/bg-chat-tile-light.png";
 import lightBG from "../assets/bg-chat-tile-dark.png";
-import SoundBeep from "../assets/whatsapp-notification.mp3";
 import { useFloating } from "../hooks/useFloating";
 
-export interface FloatingWhatsAppProps {
-  notificationSound?: boolean;
-  notificationSoundSrc?: string;
-  notificationStyle?: React.CSSProperties;
-  notificationClassName?: string;
 
-  buttonStyle?: React.CSSProperties;
-  buttonClassName?: string;
 
-  chatboxHeight?: number;
-  chatboxStyle?: React.CSSProperties;
-  chatboxClassName?: string;
-
-  darkMode?: boolean;
-  style?: React.CSSProperties;
-  className?: string;
-}
-
-export function FloatingWhatsApp({
-  notificationSound = false,
-  notificationSoundSrc = SoundBeep,
-  notificationStyle,
-  notificationClassName = "floating-whatsapp-notification",
-
-  buttonStyle,
-  buttonClassName = "floating-whatsapp-button",
-
-  chatboxHeight = 320,
-  chatboxStyle,
-  chatboxClassName = "floating-whatsapp-chatbox",
-
-  darkMode = false,
-  style,
-  className = "floating-whatsapp",
-}: FloatingWhatsAppProps) {
+export function FloatingWhatsApp() {
   const {
     timeNow,
     handleOpen,
@@ -55,20 +22,32 @@ export function FloatingWhatsApp({
     isNotification,
     isOpen,
     isDelay,
+    className,
+    style,
+    darkMode,
+    notificationSound,
+    chatboxClassName,
+    chatboxStyle,
+    chatboxHeight,
+    notificationSoundSrc,
+    notificationStyle,
+    notificationClassName,
+
+    buttonStyle,
+    buttonClassName,
   } = useFloating();
 
   return (
     <div
-      className={`${css.floatingWhatsapp} ${
-        darkMode ? `${css.dark} ` : ""
-      } ${className}`}
+      className={`${css.floatingWhatsapp} ${darkMode ? `${css.dark} ` : ""
+        } ${className}`}
       style={style}
     >
       <div
         className={`${css.whatsappButton} ${buttonClassName}`}
         onClick={handleOpen}
         style={buttonStyle}
-        //aria-hidden="true"
+      //aria-hidden="true"
       >
         <WhatsappSVG />
         {isNotification && (
@@ -82,9 +61,8 @@ export function FloatingWhatsApp({
       </div>
 
       <div
-        className={`${css.whatsappChatBox} ${
-          isOpen ? css.open : css.close
-        } ${chatboxClassName}`}
+        className={`${css.whatsappChatBox} ${isOpen ? css.open : css.close
+          } ${chatboxClassName}`}
         onClick={(event) => event.stopPropagation()}
         //aria-hidden="true"
         style={{ height: isOpen ? chatboxHeight : 0, ...chatboxStyle }}
@@ -100,7 +78,7 @@ export function FloatingWhatsApp({
           <div
             className={css.close}
             onClick={handleClose}
-            // aria-hidden="true"
+          // aria-hidden="true"
           >
             <CloseSVG />
           </div>
