@@ -8,29 +8,8 @@ import {
 } from "react";
 import dummyAvatar from "../assets/logoeyaj.webp";
 import { reducer } from "../reducer";
-import { createContext } from "react";
+import { FloatingContext } from "./FloatingContext";
 
-type FloatingContextTypeProps = {
-  phoneNumber: string;
-  accountName: string;
-  avatar?: string;
-  statusMessage?: string;
-  chatMessage?: string;
-  placeholder?: string;
-  timeNow: string;
-  isOpen: boolean;
-  isDelay: boolean;
-  isNotification: boolean;
-  inputRef: React.MutableRefObject<HTMLInputElement | null>;
-  soundRef: React.MutableRefObject<HTMLAudioElement | null>;
-  loops: React.MutableRefObject<number>;
-  notificationInterval: React.MutableRefObject<number>;
-  handleOpen: (event: React.MouseEvent<HTMLDivElement>) => void;
-  handleSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
-  handleClose: () => void;
-};
-
-const FloatingContext = createContext<FloatingContextTypeProps>(null!);
 
 type FloatingButtonProviderProps = {
   children: ReactNode;
@@ -51,6 +30,19 @@ type FloatingButtonProviderProps = {
   allowEsc?: boolean;
   phoneNumber: string;
   accountName: string;
+  className?: string
+  style?: React.CSSProperties;
+  darkMode?: boolean;
+  chatboxClassName?: string;
+  chatboxStyle?: React.CSSProperties;
+  chatboxHeight?: number;
+  notificationSoundSrc?: string;
+  notificationStyle?: React.CSSProperties;
+  notificationClassName?: string;
+
+  buttonStyle?: React.CSSProperties;
+  buttonClassName?: string;
+
 };
 
 const FloatingButtonProvider = ({
@@ -68,6 +60,19 @@ const FloatingButtonProvider = ({
   allowEsc,
   phoneNumber,
   accountName,
+  className,
+  style,
+  darkMode,
+  chatboxClassName,
+  chatboxStyle,
+  chatboxHeight,
+  notificationSoundSrc,
+  notificationStyle,
+  notificationClassName,
+
+  buttonStyle,
+  buttonClassName,
+
 }: FloatingButtonProviderProps) => {
   const [{ isOpen, isDelay, isNotification }, dispatch] = useReducer(reducer, {
     isOpen: false,
@@ -204,6 +209,20 @@ const FloatingButtonProvider = ({
         handleOpen,
         handleSubmit,
         handleClose,
+        className,
+        style,
+        darkMode,
+        notificationSound,
+        chatboxClassName,
+        chatboxStyle,
+        chatboxHeight,
+        notificationSoundSrc,
+        notificationStyle,
+        notificationClassName,
+
+        buttonStyle,
+        buttonClassName,
+
       }}
     >
       {children}
